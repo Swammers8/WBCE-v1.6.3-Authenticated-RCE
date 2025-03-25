@@ -1,5 +1,5 @@
 # WBCE CMS <= v1.6.3 Authenticated RCE
-This is an Authenticated Remote Code Execution vulnerability I found when playing in TryHackMe's Hackfinity event. It was tested on versions 1.6.2 and 1.6.3 running on Ubuntu, and potentially affecting lower versions as wellBy default WBCE trusts any module uploaded to it. The only check ran on the `.zip` module file is if it contains an `info.php` file. Exerpt from WBCE's `/admin/modules/install.php`:
+This is an Authenticated Remote Code Execution vulnerability I found when playing in TryHackMe's Hackfinity event. It was tested on versions 1.6.2 and 1.6.3 running on Ubuntu, and potentially affecting lower versions as well. By default WBCE trusts any module uploaded to it. The only check ran on the `.zip` module file is if it contains an `info.php` file. Exerpt from WBCE's `/admin/modules/install.php`:
 
 ```
 // Check if uploaded file is a valid Add-On zip file
@@ -14,6 +14,10 @@ $admin->print_error($MESSAGE['GENERIC_INVALID_ADDON_FILE']);
 ```
 
 Once the module passes this check as a "valid Add-On", any `install.php` scripts are automatically executed on the server. This exploit simply uses a [php reverse shell](https://github.com/pentestmonkey/php-reverse-shell/tree/master) as the php payload.
+
+YouTube Demonstration:
+https://youtu.be/Dhg5gRe9Dzs?si=LHC29PBRRRPNNy73
+
 
 ```
 Description:

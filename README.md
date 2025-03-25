@@ -1,4 +1,4 @@
-# WBCE <= v1.6.3 Authenticated RCE
+# WBCE CMS <= v1.6.3 Authenticated RCE
 This is an Authenticated Remote Code Execution vulnerability I found when playing in TryHackMe's Hackfinity event. It was tested on versions 1.6.2 and 1.6.3 running on Ubuntu, and potentially affecting lower versions as wellBy default WBCE trusts any module uploaded to it. The only check ran on the `.zip` module file is if it contains an `info.php` file. Exerpt from WBCE's `/admin/modules/install.php`:
 
 ```
@@ -17,7 +17,7 @@ Once the module passes this check as a "valid Add-On", any `install.php` scripts
 
 ```
 Description:
-This is an Authenticated RCE exploit for WBCE <= 1.6.3
+This is an Authenticated RCE exploit for WBCE CMS version <= 1.6.3
 It will create an infected module .zip file and start a netcat listener.
 Once the zip is created, you will have to login to the admin page
 to upload and install the module, which will immediately run the shell
